@@ -1,0 +1,20 @@
+#!/bin/sh
+
+# 1.Create an empty [[TiddlyWikiFolder|TiddlyWikiFolders]]
+#   1.1.Create a new folder in a convenient place (for example `~/MyWiki`)
+#   1.2.Create a file called `tiddlywiki.info` containing the following text:
+#       `{"themes": ["tiddlywiki/vanilla","tiddlywiki/snowwhite"]}`
+# 2.Create a subfolder called `tiddlers`
+#   * Alternatively, just copy the `editions/empty` folder from the TiddlyWiki5 repo
+# 3.Create individual TiddlerFiles in the `~/MyWiki/tiddlers` directory
+# 4. Execute the following command from the TiddlyWiki5 root directory to build a TiddlyWiki5 file from the tiddlers:
+#  `tiddlywiki ~/MyWiki --rendertiddler $:/core/save/all index.html text/plain`
+
+D=./onefile
+echo "Building in $D"
+rm -rf "$D"
+mkdir "$D"
+echo '{"themes": ["tiddlywiki/vanilla","tiddlywiki/snowwhite"]}' > "$D/tiddlywiki.info"
+mkdir "$D/tiddlers"
+tiddlywiki "$D" --rendertiddler $:/core/save/all index.html text/plain
+echo "Output is in $D/output/index.html"

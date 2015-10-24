@@ -1,0 +1,29 @@
+#!/bin/sh
+
+#From https://groups.google.com/forum/#!searchin/tiddlywiki/node$20single/tiddlywiki/PQ-GWjqAVOk/wYWXS3Km9JYJ
+#  node ./tiddlywiki.js \
+#  	./path/to/my/wiki/folder \
+#  	--verbose \
+#  	--load ./path/to/my/wikifile \
+#  	--rendertiddler $:/core/templates/tiddlywiki5.template.html ./test.html text/plain \
+#  	|| exit 1
+#  
+#  Line 1 invokes TW5, line 2 points to your wiki folder (take a copy of
+#  editions/empty to get started). Line 4 loads the (non-system) tiddlers from the
+#  specified TiddlyWiki file, and line 5 saves the result as a standalone wiki.   
+#  If you're working this way you can make your scripts deposit tiddlers as
+# .tid files in the tiddlers folder of your wiki folder. Then they will be
+#  automatically loaded when the wiki starts up.  
+
+D=./onefile
+echo "Building from $1"
+if [[ ! -r "$1 "]]; then
+   echo "Please specify single file tiddlywiki (an html file)"
+   exit 1
+fi
+tiddlywiki vecmap \
+   --verbose \
+   --load "$1" \
+   --rendertiddler $:/core/templates/tiddlywiki5.template.html ./test.html text/plain 
+  
+echo "Tiddlers saved to vecmap"
