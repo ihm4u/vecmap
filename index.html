@@ -145,6 +145,8 @@ Error message and password prompt
 
 <li>$:/plugins/ihm/vecmap-0.8.6-backup</li>
 
+<li>$:/plugins/ihm/vecmap/utils.js</li>
+
 <li>$:/plugins/tiddlywiki/codemirror</li>
 
 <li>$:/SiteSubtitle</li>
@@ -6688,6 +6690,277 @@ exports.run = function(text, tiddler) {
     }
 }</pre>
 </div>
+<div created="20151020004739163" creator="ihm4u" modified="20151109071546316" modifier="ihm4u" module-type="library" tags="wikiadmin" title="$:/plugins/ihm/vecmap/utils.js" type="application/javascript">
+<pre>/*\
+title: $:/plugins/ihm/vecmap/utils.js
+type: application/javascript
+module-type: library
+
+  A library of functions, used in the TW5 vecmap  plugin
+
+\*/
+
+/*jslint node: true, browser: true */
+/*global $tw: false */
+
+(function(){
+
+function getOffsetRect(elem) {
+  var box = elem.getBoundingClientRect()
+  var body = document.body
+  var docElem = document.documentElement
+  var scrollTop = elem.scrollTop || window.pageYOffset || docElem.scrollTop || body.scrollTop
+  var scrollLeft = elem.scrollLeft || window.pageXOffset || docElem.scrollLeft || body.scrollLeft
+  var clientTop = docElem.clientTop || body.clientTop || 0
+  var clientLeft = docElem.clientLeft || body.clientLeft || 0
+
+  var top  = box.top -  scrollTop  - clientTop
+  var left = box.left - scrollLeft - clientLeft
+  return { top: top, left: left, width: box.width, height: box.height, right: left+box.width, bottom: top+box.height}
+}
+
+/* count number of children of the specified tiddler 
+   parent: the tiddler 
+*/
+function countDescendants(parent,tidtree,maxdepth,currdepth) {
+  //Return if maxdepth is reached
+  if (currdepth&gt;=maxdepth) return 0;
+
+  //Count the descendants
+  var tiddlers = getChildren(parent,tidtree);
+  var cnt = 0;
+
+  cnt = cnt + tiddlers.length;
+  for(var t=0;t&lt;tiddlers.length; t++) {
+    var tiddler = $tw.wiki.getTiddler(tiddlers[t]);
+    if (tiddler) {
+           cnt = cnt + countDescendants(tiddler.fields.title,tidtree,maxdepth,currdepth+1);
+    }
+  }
+  return cnt;
+}
+
+exports.buildTable = function(rootTid, tidtree) {
+  /*Add children to the unfinished table*/
+  var addChildren = function(table, start, maxdepth, currdepth) {
+     var wiki = $tw.wiki;
+     if (currdepth&gt;maxdepth) return undefined;
+
+     var tid = wiki.getTiddler(start);
+     var tiddlers = getChildren(start,tidtree);
+     var cnt = 1+countDescendants(start,tidtree,maxdepth,currdepth);
+     var escstart = escape(start);
+     var tooltip = tid ? tid.getFieldString(tidtree.tooltip):&quot;&quot;;
+     var title;
+
+     if (tid) {
+       if (!tidtree.nodetitle)
+         title = tid.hasField(&quot;caption&quot;) ? tid.fields.caption:tid.fields.title;
+       else
+         title = tid.getFieldString(tidtree.nodetitle);
+     }
+     if (currdepth &gt;= tidtree.startat) {
+        var tidlink = '&lt;a class=&quot;tc-tiddlylink tc-tiddlylink-resolves vmap-base-node vmap-node&quot;  href=&quot;#'+escstart+'&quot; id=&quot;'+tidtree.id+'-'+escstart+'&quot;  title=&quot;'+tooltip+'&quot;&gt;'+title+'&lt;/a&gt;';
+        table.str = table.str + '&lt;tr&gt;&lt;td  rowspan=&quot;'+cnt+'&quot;&gt;'+tidlink+'&lt;/td&gt;&lt;/tr&gt;';
+     }
+
+     if ( typeof tidtree[currdepth] === &quot;undefined&quot; ) {
+       tidtree[currdepth] = [];
+       tidtree[currdepth].push(start);
+     } else {
+       tidtree[currdepth].push(start);
+     }
+
+     for(var t=0;t&lt;tiddlers.length; t++) {
+       var tiddler = wiki.getTiddler(tiddlers[t]);
+       if (tiddler)
+          addChildren(table, tiddler.fields.title, maxdepth,currdepth+1);
+     }
+  }
+
+  tidtree.id = (new Date()).valueOf();
+  var   filter, tiddlers = [],
+        data = [], out;
+
+  out = { &quot;str&quot; : '&lt;table id=&quot;'+tidtree.id+'-table&quot;&gt;', &quot;cnt&quot; : [] };
+  addChildren(out, rootTid, tidtree.maxdepth, 0);
+
+  out.str  = out.str  + '&lt;/table&gt;';
+
+  //DEBUG
+  console.log(&quot; table = &quot;, out.str, &quot;\ntidtree: &quot;,tidtree);
+  return out.str;
+}
+
+function getPort(vmapdiv,edge,criteria) {
+   var el;
+   var cont_rect = getOffsetRect(vmapdiv);
+
+   if ( typeof criteria === &quot;string&quot; ) {
+       el = document.querySelector(criteria);
+   /* FIXME: show error */
+   if (el == null) return null;
+   } else if (criteria instanceof HTMLElement) el = criteria;
+
+   var el_rect = getOffsetRect(el);
+   //DEBUG console.log(&quot;el rect=&quot;,el_rect,&quot;\ndivrect=&quot;,cont_rect);
+   
+   var r = { &quot;bottom&quot;: el_rect.bottom - cont_rect.top,
+                 &quot;left&quot;:       el_rect.left      - cont_rect.left,
+                 &quot;right&quot;:     el_rect.right    - cont_rect.left,
+                 &quot;top&quot;:       el_rect.top      - cont_rect.top };
+    var p = &quot;&quot;;
+    switch (edge.toUpperCase()) {
+       case 'L':
+          p = [ Math.round(r.left), Math.round(r.bottom/2 + r.top/2) ];
+          break;
+       case 'R':
+          p = [ Math.round(r.right), Math.round(r.bottom/2 + r.top/2) ];
+          break;
+       case 'T':
+          p = [ Math.round(r.right/2 + r.left/2), Math.round(r.top) ];
+          break;
+       case 'B':
+          p = [ Math.round(r.right/2 + r.left/2), Math.round(r.bottom) ];
+          break;
+   }
+
+   //DEBUG console.log(&quot;\nport=&quot;,p);
+   return p;
+}
+
+/* firgures our which ports to use to connect
+   e1 and e2. There are four ports for each 
+   element: T(op), B(ottom), R(ight), L(eft) */
+function whichPort(e1,e2) {
+   /* for now presume r,l */
+   return [ &quot;R&quot;, &quot;L&quot; ];
+}
+
+function error(msg) {
+   return '&lt;span style=&quot;color:green&quot;&gt;vecmap:&lt;/span&gt;&lt;span style=&quot;color:red&quot;&gt;'+msg+'&lt;/span&gt;';
+}
+
+/* Produces an svg path element to connect e1 and e2 */
+function connect(vmapdiv,e1, e2) {
+   var dir = whichPort(vmapdiv,e1,e2);
+   var p1 = getPort(vmapdiv,dir[0],e1);
+   var p2 = getPort(vmapdiv,dir[1],e2);
+   var off;
+
+   if ( e1 == null || e2 == null ) return error(&quot;can't connect null element&quot;);
+   if ( p1 == null ) return error('port not found for '+e1.tagName+' - '+e1.innerHTML);
+   if ( p2 == null ) return error('port not found for '+e2.tagName+' - '+e2.innerHTML);
+
+   if ( p2[1] &gt; p1[1] ) off = +10;
+   if ( p2[1] &lt; p1[1] ) off = -10;
+   if ( Math.abs(p2[1] - p1[1]) &lt; 5 ) off = 0;  //Straight line if distance is less than 5px
+   return '&lt;path d=&quot;M'+p1[0]+', '+p1[1]+' Q'+(p1[0]+10)+','+p1[1]+'  '+(p1[0]+10)+', '+(p1[1]+off)+' Q'+(p1[0]+10)+', '+p2[1]+'  '+(p2[0]-10)+', '+p2[1]+'&quot; marker-end=&quot;url(#vm-arrow)&quot;/&gt;'
+/*#aeb0b5*/
+}
+
+exports.buildSVG = function (vmapdiv, tidtree) {
+   var div = document.getElementById(tidtree.id+'-table');
+   if (!div) {
+      //FIXME: this is done because the window.onresize function
+      // is not cleaned up in widget.render when a tiddler is not
+      // visibe any more or is deleted 
+      return;
+   }
+   var table_rect =  div.getBoundingClientRect();
+return '&lt;svg  xmlns=&quot;http://www.w3.org/2000/svg&quot; height=&quot;'+table_rect.height+'px&quot; width=&quot;'+table_rect.width+
+       'px&quot; style=&quot;overflow: visible&quot;&gt; &lt;defs&gt; &lt;marker id=&quot;vm-arrow&quot; viewBox=&quot;0 0 10 10&quot; refX=&quot;1&quot; refY=&quot;5&quot; '+
+       'markerUnits=&quot;strokeWidth&quot; orient=&quot;auto&quot; '+
+       'markerWidth=&quot;8&quot; markerHeight=&quot;6&quot;&gt; '+
+       '&lt;polyline class=&quot;vmap-base-arrow vmap-arrow&quot; points=&quot;0,0 10,5 0,10 0,5&quot; style=&quot;opacity:1;&quot;/&gt;'+
+       '&lt;/marker&gt;'+
+       '&lt;marker id=&quot;vm-circle&quot; viewBox=&quot;-25 0 50 50&quot; refX=&quot;0&quot; refY=&quot;0&quot; '+ 
+       'markerUnits=&quot;strokeWidth&quot; orient=&quot;0&quot; '+
+       'markerWidth=&quot;50&quot; markerHeight=&quot;50&quot;&gt; '+
+       '&lt;text x = &quot;-10&quot; y = &quot;12.5&quot; fill = &quot;navy&quot; font-size = &quot;15&quot;&gt; '+
+       ' It was the best of times '+
+       '&lt;/text&gt; '+
+       '&lt;rect x=&quot;-15&quot; y=&quot;0&quot; width=&quot;30&quot; height=&quot;15&quot; rx=&quot;0px&quot; ry=&quot;0px&quot; style=&quot;opacity:0.5&quot; /&gt; '+
+       '&lt;circle cx=&quot;1&quot; cy=&quot;5&quot; r=&quot;1&quot; stroke=&quot;darkblue&quot; stroke-width=&quot;1&quot; fill=&quot;red&quot; /&gt; '+
+       '&lt;/marker&gt; '+
+       '&lt;/defs&gt; '+
+       '&lt;g class=&quot;vmap-base-link vmap-link&quot;  height=&quot;'+table_rect.height+'px&quot; '+
+       'width=&quot;'+table_rect.width+'px&quot; style=&quot;overflow: visible&quot;&gt; '+
+       connectAll(vmapdiv,tidtree) +
+       '&lt;/g&gt; &lt;/svg&gt;';
+}
+
+/* Return an array of the children of tiddler tid */
+function getChildren(tid,tidtree) {
+   var filter,res;
+   switch ( tidtree.mode.toLowerCase() ) {
+      case 'tagging':
+         filter = '[['+tid+']tagging[]]+'+tidtree.filter;
+         res = $tw.wiki.filterTiddlers(filter);
+         break;
+      case 'linking':
+         filter = '[['+tid+']links[]!is[missing]]+'+tidtree.filter;
+         res = $tw.wiki.filterTiddlers(filter);
+         break;
+   }
+   return res;
+}
+
+/* Return true if the child tiddler is a descendant parent */
+exports.isDescendant = function (child,parent,tidtree) {
+   if ( isChild(child,parent, tidtree) ) return true;
+   
+   //Traverse the tree to find out if it is a child
+   var children = getChildren(parent,tidtree);
+   var res = false;
+   for( var i = 0; i&lt;children.length; i++ ) {
+      res = exports.isDescendant(child,children[i],tidtree);
+      if (res) {
+         //DEBUG console.log(`${child} is descendant of ${children[i]}`);
+         break;
+      }
+   } 
+   return res;
+}
+
+/* Return true if the child tiddler is a child of parent */
+function isChild(child,parent,tidtree) {
+   switch ( tidtree.mode.toLowerCase() ) {
+      case 'tagging':
+         var c = $tw.wiki.getTiddler(child);
+         if (c) return c.hasTag(parent);
+         else return false;
+         break;
+      default:
+         var c = getChildren(parent, tidtree);
+         return ( c.indexOf(child) !== -1 )
+   }
+}
+
+function connectAll(vmapdiv,tidtree) {
+   res = [];
+   for(var i=0; i&lt;tidtree.length-1; i++)
+   {
+      for(var j=0; j&lt;tidtree[i].length; j++)
+      {
+         for (var k=0; k&lt;tidtree[i+1].length; k++)
+         {
+            var title1 = tidtree[i][j];
+            var title2 = tidtree[i+1][k];
+            var esctitle1 = escape(title1);
+            var esctitle2 = escape(title2);
+            el1 = document.getElementById(tidtree.id+'-'+esctitle1);
+            el2 = document.getElementById(tidtree.id+'-'+esctitle2);
+            if ( el1 &amp;&amp; el2 &amp;&amp; isChild(title2,title1, tidtree) ) res.push( connect(vmapdiv, el1, el2) );
+         }
+      }
+   }
+  
+   return res.join(&quot; &quot;);
+}
+
+}())</pre>
+</div>
 <div author="JeremyRuston" dependents="" description="CodeMirror: text editor" list="readme usage" plugin-type="plugin" title="$:/plugins/tiddlywiki/codemirror" type="application/json" version="5.1.9">
 <pre>{
     &quot;tiddlers&quot;: {
@@ -6829,10 +7102,10 @@ exports.run = function(text, tiddler) {
 <div modified="20151031051157504" modifier="ihm4u" title="$:/state/popup-$:/state/plugin-info-77467299-$:/plugins/ihm/vecmap">
 <pre>yes</pre>
 </div>
-<div modified="20151031060937916" modifier="ihm4u" title="$:/state/showeditpreview">
-<pre>yes</pre>
+<div modified="20151109070706055" modifier="ihm4u" title="$:/state/showeditpreview">
+<pre>no</pre>
 </div>
-<div modified="20151031055724626" modifier="ihm4u" title="$:/state/sidebar">
+<div modified="20151109071414395" modifier="ihm4u" title="$:/state/sidebar">
 <pre>yes</pre>
 </div>
 <div modified="20151031041836570" modifier="ihm4u" title="$:/state/tab--1498284803">
@@ -6856,7 +7129,7 @@ exports.run = function(text, tiddler) {
 <div created="20151024164759136" creator="i" modified="20151024164801192" modifier="ihm4" title="$:/status/UserName">
 <pre>ihm4u</pre>
 </div>
-<div list="$:/ControlPanel Development [[vecmap - Easy tiddler maps for TW5]]" title="$:/StoryList">
+<div list="Development $:/plugins/ihm/vecmap/utils.js [[vecmap - Easy tiddler maps for TW5]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20151025034438642" creator="ihm4u" modified="20151031042848849" modifier="ihm4u" title="$:/temp/advancedsearch">

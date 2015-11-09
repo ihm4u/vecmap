@@ -1,0 +1,145 @@
+#!/usr/bin/perl
+#use strict;
+use warnings;
+
+use LWP::Simple;
+use HTML::Entities;
+
+sub wget {
+   my $url = shift;
+   my $tmpfile = "/tmp/tw5-bible-" . time(); 
+   system "wget -O $tmpfile -o /tmp/t $url";
+   die "Unable to run wget $url" if ($? >> 8) == -1;
+   return $tmpfile;
+}
+
+sub clean_verse {
+   my $ver = shift;
+   $ver = decode_entities($ver);
+   $ver =~ s/[ \n\r]{2,}/ /msg;
+   $ver =~ s/^\s+|\s+$//g;
+   return $ver;
+}
+
+sub readall {
+   my $file = shift;
+   
+   open(my $in,  "<", $file)  or die "Can't open $file: $!";
+   local $/ = undef;
+   my $text = <$in>;
+   close $in;
+   return $text;
+}
+
+sub get_xtions {
+   print "Getting available translations...";
+
+   ######################################
+   #get bible books and url for each book
+   my $wiki = shift;
+   my $tids = readall($wiki);
+   my @matches;
+
+   @matches = $tids =~ /ihm\/bible\/books\/(\w+?)\/[^{]+?:\s+\{.*?text.*?:.*?\\nsource:(.*?)\\n.*?\}/msg;
+      
+
+   #####################################
+   #Trim spaces
+   s{^\s+|\s+$}{}g foreach @matches;
+  
+   %books = @matches; 
+   my $cnt = scalar keys %books;
+   my @names = keys %books;
+   print "$cnt found: @names .\n";
+   #print "$_\n" foreach %books;
+   return %books
+}
+
+sub MEX_getverse {
+   my $book = shift;
+   my $ch = shift;
+   my $ver = shift;
+
+   my %url_bases = (
+      Gen => "01_genesis_",
+      Ex  => "02_exodus_",
+      Lv => "03_levitico_",
+      Num => "04_numeros_",
+      Deut => "05_deuteronomio_",
+      Josh => "06_josue_",
+      Jdgs => "07_jueces_",
+      1Sam => "08_samuel-1_",
+      2Sam => "09_samuel-2_",
+      1Kgs => "10_reyes-1_",
+      2Kgs => "11_reyes-2_",
+      1Chr => "12_cronicas-1_",
+      2Chr => "13_cronicas-2_",
+      Ezr  => "14_esdras_",
+      Neh  => "15_nehemias_",
+      Rut  => "16_rut",
+      Tob  => "17_tobias_",
+      Judit=> "18_judit_",
+      Esth => "19_ester_",
+      1Mac => "20_macabeos-1_",
+      2Mac => "21_macabeos-2_",
+      Is   => "22_isaias_",
+      Jer  => "23_jeremias_",
+      Bar  => "24_baruc",
+      Ezq  => "25_ezequiel_",
+      Dan  => "26_daniel_",
+      Hos  => "27_oseas_",
+      Joel => "28_joel",
+      Amos => "29_amos_",
+      Abd  => "30_abdias",
+      Jon  => "31_jonas",
+      Mic  => "32_miqueas_",
+      Nah  => "33_nahum",
+      Hab  => "34_habacuc",
+      Zeph => "35_sofonias",
+      Hag  => "36_ageo",
+      Zec  => "37_zacarias_",
+      Mal  => "38_malaquias",
+      Ps   => "39_salmos_", #FIXME: is not 5 per page, url changes
+      SgSg => "40_cantares",
+      Lam  => "41_lamentaciones",
+      Job  => "42_job_",
+      Prv  => "43_proverbios_",
+      Eccl => "44_eclesiastes_",
+      Wis  => "45_sabiduria_",
+      Ecus => "46_eclesiastico_",
+      Mt   => "01_mateo_",
+      Mc   => "02_marcos_",
+      Lk   => "03_lucas_",
+      Jn   => "04_juan_",
+      Acts => "05_actos_",
+      Rom  => "06_romanos_",
+      2Sam => "09_samuel-2_",
+      2Sam => "09_samuel-2_",
+      2Sam => "09_samuel-2_",
+     
+      #2 Samuel - 2 Sam 1 Kings - 1 Kings2 Kings - 2 Kings 1 Chronicles - 1 Chronicles2 Chronicles - 2 Chr Ezra - EzraNehemiah - Neh Tobit - Tob Judith - Jdt Esther - Esth 10Maccabees - 1 Macc 2 Maccabees - 2 MaccJob - Job Psalms - Ps Proverbs - Prov Ecclesiastes - Ecc1Song of Solomon - Song Canticles - CanticlesWisdom - Wis Sirach - SirachIsaiah - Isa Jeremiah - JeremiahLamentations - Lam Baruch - BaruchEzekial - Ezek Daniel - DanielHosea - Hos Joel - JoelAmos - Am Jonah - JonahMicah - Mic Nahum - NahumHabakkuk - Hab Zephaniah - ZephaniahHaggai - Hag Zechariah - ZechariahMalachi - Mal New Testament
+
+      #Matthew - MtMark - Mk Luke - LkJohn - Jn Acts of the Apostles - ActsRomans - Rom 1 Corinthians - 1 Corinthians2 Corinthians - 2 Cor Galatians - GalatiansEphesians - Eph Philippians - Phil Colossians - Col 1 Thessalonians - 1 Thessalonians2 Thessalonians - 2 Thess 1 Timothy - 1 Timothy2 Timothy - 2 Tim Titus - TitusPhilemon - Philemon Hebrews - HebrewsJames - Jas 1 Peter - 1 Peter2 Peter - 2 Pet 1 John - 1 Jn2 John - 2 Jn 3 John - 3 JnJude - Jude Revelation - Rev Apocalypse - Apoc
+   );
+
+   my $url_base = "http://www.vicariadepastoral.org.mx/sagrada_escritura/biblia/antiguo_testamento/01_genesis_";
+   my $url = $url_base . sprintf("%02d", int(1 + ($ch-1) / 5) ) . ".htm";
+
+   #Read URL
+   my $file = wget($url);
+   #my $file = "/tmp/tw5-bible";
+   print "Loaded MEX url into $file\n";
+   my $text = readall($file);
+
+   $text =~ /(?:<.*?>)+$ch:(?:<.*?>)+$ver\s*(.*?)</msg;
+   $verse = $1;
+
+   unlink $file;
+   return clean_verse($verse);
+}
+
+my %books = get_xtions("index.html");
+print "$_ \t==> $books{$_}\n" for keys %books;
+
+print "verse:" . MEX_getverse("Gen","10","2");
+

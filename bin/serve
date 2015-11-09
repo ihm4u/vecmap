@@ -1,0 +1,8 @@
+#!/bin/sh
+
+if [ -z "$1" ]; then
+   echo "Please specify tiddlywiki folder"
+   exit 1
+fi
+
+tiddlywiki "$1" --server 
