@@ -1,0 +1,13 @@
+{
+    "description": "IHM TW5 plugin development",
+    "plugins": [
+        "tiddlywiki/tiddlyweb",
+        "tiddlywiki/filesystem",
+        "tiddlywiki/highlight",
+        "plugins/tidgraph"
+    ],
+    "themes": [
+        "tiddlywiki/vanilla",
+        "tiddlywiki/snowwhite"
+    ]
+}
