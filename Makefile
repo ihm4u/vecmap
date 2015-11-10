@@ -13,6 +13,10 @@ all: $(TARGETS)
 clean:
 	rm $(TARGETS)
 
+index:
+	tiddlywiki editions/tidgraph --build index
+	cp editions/tidgraph/output/index.html index.html
+
 serve:
 	rm -f $(DISTDIR)/utils.js
 	ln -s `readlink -f $(SRCDIR)/utils.js` $(DISTDIR)
