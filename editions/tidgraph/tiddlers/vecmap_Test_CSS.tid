@@ -1,0 +1,19 @@
+created: 20151026054558101
+creator: ihm4u
+modified: 20151026063816687
+modifier: ihm4u
+title: vecmap Test CSS
+type: text/css
+
+.vmap-node {
+   background-color: blue;
+   color: white;
+}
+
+.vmap-link {
+   stroke: red;
+}
+
+.vmap-arrow {
+   fill: red;
+}

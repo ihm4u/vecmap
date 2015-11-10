@@ -1,0 +1,57 @@
+created: 20141203101158786
+creator: Tobias Beer
+modified: 20141203101309588
+modifier: Tobias Beer
+module-type: macro
+tags: 
+title: $:/macros/skeeve/length.js
+type: application/javascript
+
+/*\
+title: $:/macros/skeeve/length.js
+type: application/javascript
+module-type: macro
+
+<<length text>>
+
+Examples:
+<<length "sometext">>
+<<length tiddler:"tiddlertitle">>
+<$macrocall $name="length" text="sometext"/>
+<$macrocall $name="length" tiddler={{!!title}}/>
+
+\*/
+(function(){
+
+/*jslint node: true, browser: true */
+/*global $tw: false */
+"use strict";
+
+/*
+Information about this macro
+This is a macro to get the length of a string/text or a tiddler.
+
+For a tiddler's length the string-length of its JSON representation is used.
+*/
+
+exports.name = "length";
+
+exports.params = [
+    { name: "text" },
+    { name: "tiddler" },
+];
+
+/*
+Run the macro
+*/
+exports.run = function(text, tiddler) {
+    if(!text) {
+        if(!tiddler) {
+            return 0;
+        }
+        text = $tw.wiki.getTiddlerAsJson(tiddler);
+    }
+    return text.length.toString();
+};
+
+})();

@@ -1,0 +1,9 @@
+created: 20151024163558704
+modified: 20151024164113911
+tags: 
+title: Sizes
+
+<$list filter="[prefix[$:/plugins/ihm]]">
+<$macrocall $name="length" tiddler={{!!title}}/>
+<$link><$view field=title/></$link><br>
+</$list>

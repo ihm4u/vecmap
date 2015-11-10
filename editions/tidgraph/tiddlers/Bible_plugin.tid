@@ -1,0 +1,36 @@
+created: 20151029043840809
+creator: ihm4u
+modified: 20151029055824631
+modifier: ihm4u
+title: Bible plugin
+
+!Introduction
+The [[bible|$:/plugins/ihm/bible]] plugin allows you to quote scriptures from different languages and translations. However, it //does not include all the bibles or verses//. More on that later. This is how a quote looks like:
+
+<<bqb Gen 1,1-1,2>>
+
+You can also quote verses inline like this: <<bqi Gen 1,1>>. The tooltip showing other translations can be seen when you hover the mouse over the quote.
+
+!How to use
+!!Inline quotes
+To quote inline use the ``bqi`` macro, it stands for (b)ible (q)uote (i)nline. You can use it like this:
+``<<bqi Gen 1,1>>`` and it includes the verse inline: <<bqi Gen 1,1>>. The default bible translation is used (it is specified by $:/config/ihm/bible/defaultTranslation).
+
+
+You can also secify the translation to use:  ``<<bqi Gen 1,1 MEX>>`` to quote from the MEX (Mexican) translation:<<bqi Gen 1,1 MEX>> 
+
+
+!!Block quotes
+The block version is the ``bqb`` macro. ``<<bqb Gen 1,1 VUL>>`` looks like this:
+
+<<bqb Gen 1,1 VUL>>
+
+or in Hebrew (install the SBL Hebrew font for a proper view)
+``<<bqb Gen @1,1 BHS>>``. The `@` sign is used to show the verse numbers within the quote:
+
+<<bqb Gen @1,1 BHS>>
+
+or in Greek ``<<bqb Mt 1,1 NA28>>``. Notice the verse numbers are now shown, because we used `1,1` withouth the `@`:
+
+<<bqb Mt 1,1 NA28>>
+

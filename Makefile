@@ -1,6 +1,10 @@
 DISTDIR=editions/tidgraph/plugins/tidgraph
-TARGETS=$(DISTDIR)/utils.js
+SRCDIR=src/plugins/tidgraph
+JSSRC = utils.js widget.js
+SRC= plugin.info $(shell cd $(SRCDIR) > /dev/null && ls *.tid doc/*.tid)
+TARGETS=$(addprefix $(DISTDIR)/,$(JSSRC) $(SRC))
 PROD=yes
+$(info $(SRC))
 
 .PHONY: all clean serve
 
@@ -9,14 +13,29 @@ all: $(TARGETS)
 clean:
 	rm $(TARGETS)
 
-serve: all
-	bin/serve editions/tidgraph
+serve:
+	rm -f $(DISTDIR)/utils.js
+	ln -s `readlink -f $(SRCDIR)/utils.js` $(DISTDIR)
+	bin/serve editions/tidgraph;
+	while inotifywait -e move_self -e modify  $(DISTDIR)/utils.js; do \
+		bin/serve -k; \
+		bin/serve editions/tidgraph; \
+	done
 
-editions/tidgraph/plugins/tidgraph/%.js: src/plugins/tidgraph/%.js
+$(DISTDIR)/%.js: $(SRCDIR)/%.js
+	if [ -L "$@" ]; then rm -f "$@"; fi
 	if [ "$(PROD)" ]; then \
-		sed -ne '\#/\*\\#,\#\\\*/# p' $^ > $@ && \
-		closure $^ >> $@; \
+		sed -ne '\#/\*\\#,\#\\\*/# p' "$^" > "$@" && \
+		closure "$^" >> "$@"; \
 	else \
-	   cp $^  $@; \
+	   cp "$^"  "$@"; \
 	fi
 
+$(DISTDIR)/plugin.info: $(SRCDIR)/plugin.info
+	   cp "$^"  "$@";
+
+$(DISTDIR)/%.tid: $(SRCDIR)/%.tid
+	   cp "$^"  "$@";
+
+$(DISTDIR)/doc/%.tid: $(SRCDIR)/doc/%.tid
+	   cp "$^"  "$@";

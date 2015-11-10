@@ -1,8 +1,16 @@
 #!/bin/sh
-
+PIDFILE="/tmp/tw5dev-server"
+LOG=/tmp/tw5dev.log
 if [ -z "$1" ]; then
    echo "Please specify tiddlywiki folder"
    exit 1
 fi
 
-tiddlywiki "$1" --server 
+if [ "$1" = "-k" ]; then
+   echo "Stoping server"
+   kill -INT `cat $PIDFILE`
+else
+   tiddlywiki "$1" --server > $LOG &
+   echo "$!" > "$PIDFILE" 
+   echo "Server started, log in $LOG"
+fi

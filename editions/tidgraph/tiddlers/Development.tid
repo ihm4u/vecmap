@@ -1,0 +1,22 @@
+created: 20151024153452455
+creator: ihm4u
+modified: 20151029054004111
+modifier: ihm4u
+tags: 
+title: Development
+
+<$list filter="[prefix[$:/plugins/ihm/]!suffix[backup]][prefix[$:/config/ihm/]]">
+<p style="font-size:1.1em; margin-bottom: 0.5em;">  
+<$link to={{!!title}}>
+   <$view field="title"/>
+</$link> {{!!version}}
+</p>
+
+<$list filter="[all[current]plugintiddlers[]]">
+<li> 
+  <$link to={{!!title}}>
+     <$view field="title"/>
+  </$link>
+</li>
+</$list>
+</$list>

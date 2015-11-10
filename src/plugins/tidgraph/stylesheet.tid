@@ -1,0 +1,65 @@
+created: 20151022030256786
+creator: ihm4u
+modified: 20151026055631315
+modifier: ihm4u
+tags: $:/tags/Stylesheet
+title: $:/plugins/ihm/tidgraph/stylesheet
+type: text/css
+
+/*Eliminate border in table and cells*/
+.tgr-container table {
+   border-collapse: collapse;
+   border: none;
+   background-color: transparent;
+}
+
+.tgr-container table  td {
+   border: none;
+   background-color: transparent;
+}
+
+/*nice round box around tiddlers*/
+.tgr-container td  a  {
+ 
+}
+
+.tgr-container {
+   position:relative; 
+   left:0; 
+   top:0; 
+   background-color: transparent;
+   overflow: auto; /* This is needed to scroll on big maps */
+   z-index:1;
+}
+.tgr-svg-int { 
+	z-index: -1;
+	position:absolute;
+	background-color:transparent;
+	opacity: 1;
+        left: 0;
+        top:0;
+}
+
+/* SVG arrows */
+.ihm-tgr-link {
+   fill: none;
+   stroke-width: 2;
+   stroke: #aeb0b5;
+}
+
+.tgr-arrow {
+   fill: #aeb0b5;
+}
+
+.ihm-tgr-node {
+   background-color: #dce4ef;
+   border-radius: 15px;
+   padding: 0.1em 0.4em;
+   /* border: 0px dashed #cd2026; */
+   box-shadow: 4px 4px 5px #888888;
+   text-align: center;
+   vertical-align: middle;
+   display:block;
+   margin: 6px 10px;
+   font-size: 1em;
+}

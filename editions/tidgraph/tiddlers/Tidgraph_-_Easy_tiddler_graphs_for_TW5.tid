@@ -1,0 +1,21 @@
+created: 20151024065631952
+creator: ihm4u
+modified: 20151110071253201
+modifier: ihm4u
+tags: home
+title: Tidgraph - Easy tiddler graphs for TW5
+type: text/vnd.tiddlywiki
+
+!Introduction
+The [[tidgraph|$:/plugins/ihm/tidgraph]] plugin shows tiddlers with an SVG/HTML5 diagram like the following:
+<$tidgraph start="Virtues" />
+
+It uses the tags to figure out the tree structure. It can optionally use links also. If a tiddler has a `summary` field then it is used as a tooltip. If a tiddler has a `caption` field then it is used as title for the node. There are attributes to specify each, see the [[Documentaion|$:/plugins/ihm/tidgraph/documentation]] for options. 
+
+!Installation
+|Current version|{{$:/plugins/ihm/tidgraph!!version}}|
+
+To install simply drag this link to your wiki:
+[[$:/plugins/ihm/tidgraph]]
+
+{{$:/plugins/ihm/tidgraph/readme}}

@@ -1,0 +1,162 @@
+author: IHM4U
+core-version: 5.1.9
+created: 20151029042306400
+creator: ihm4u
+description: Bible plugin for TW5
+list: readme
+modified: 20151029042309899
+modifier: ihm4u
+plugin-type: plugin
+title: $:/plugins/ihm/bible
+type: application/json
+version: 0.5.6
+
+{
+    "tiddlers": {
+        "$:/config/ihm/bible/defaultTranslation": {
+            "text": "VUL",
+            "title": "$:/config/ihm/bible/defaultTranslation",
+            "tags": "",
+            "modifier": "ihm4u",
+            "modified": "20151027043455791",
+            "creator": "ihm4u",
+            "created": "20151027043353214"
+        },
+        "$:/config/ihm/bible/translations": {
+            "text": "NAB NVUL RSVCE MEX",
+            "title": "$:/config/ihm/bible/translations",
+            "tags": "",
+            "modifier": "ihm4u",
+            "modified": "20151028113735924",
+            "creator": "ihm4u",
+            "created": "20151027043503392"
+        },
+        "$:/config/ihm/bible/verseSeparator": {
+            "text": ":",
+            "title": "$:/config/ihm/bible/verseSeparator",
+            "tags": "",
+            "modifier": "ihm4u",
+            "modified": "20151028004407303",
+            "creator": "ihm4u",
+            "created": "20151028003337096"
+        },
+        "$:/plugins/ihm/bible/books/NAB/Gen": {
+            "created": "20151028010606875",
+            "creator": "ihm4u",
+            "text": "name: Gen\nnameLong: Genesis\nsource:http://www.usccb.org/bible/genesis/\n1,1:In the beginning, when God created the heavens and the earth—\n1,2:and the earth was without form or shape, with darkness over the abyss and a mighty wind sweeping over the waters—\n2,1:Thus the heavens and the earth and all their array were completed.\n2,2:On the seventh day God completed the work he had been doing; he rested on the seventh day from all the work he had undertaken.",
+            "type": "application/x-tiddler-dictionary",
+            "title": "$:/plugins/ihm/bible/books/NAB/Gen",
+            "tags": "",
+            "modifier": "ihm4u",
+            "modified": "20151028040030979"
+        },
+        "$:/plugins/ihm/bible/books/NVUL/Gen": {
+            "text": "name: Gen\nnameLong: Genesis\nsource: http://www.vatican.va/archive/bible/nova_vulgata/documents/nova-vulgata_index_lt.html\n1,1:In principio creavit Deus caelum et terram.\n1,2:Terra autem erat inanis et vacua, et tenebrae super faciem abyssi, et spiritus Dei ferebatur super aquas.\n2,1:Igitur perfecti sunt caeli et terra et omnis exercitus eorum.\n2,2:Complevitque Deus die septimo opus suum, quod fecerat, et requievit die septimo ab universo opere, quod patrarat.",
+            "type": "application/x-tiddler-dictionary",
+            "title": "$:/plugins/ihm/bible/books/NVUL/Gen",
+            "tags": "",
+            "modifier": "ihm4u",
+            "modified": "20151028035124899",
+            "creator": "ihm4u",
+            "created": "20151027030743662"
+        },
+        "$:/plugins/ihm/bible/books": {
+            "text": "Genesis - Gen\tExodus - Ex\nLeviticus - Lev\tNumbers - Num\nDeuteronomy - Deut\tJoshua - Josh\nJudges - Judg\tRuth - Ruth\n1 Samuel - 1 Sam\t2 Samuel - 2 Sam\n1 Kings - 1 Kings\t2 Kings - 2 Kings\n1 Chronicles - 1 Chr\t2 Chronicles - 2 Chr\nEzra - Ezra\tNehemiah - Neh\nTobit - Tob\tJudith - Jdt\nEsther - Esth 1\tMaccabees - 1 Macc\n2 Maccabees - 2 Macc\tJob - Job\nPsalms - Ps\tProverbs - Prov\nEcclesiastes - Ecc1\tSong of Solomon - Song\nCanticles - Cant\tWisdom - Wis\nSirach - Sir\tIsaiah - Isa\nJeremiah - Jer\tLamentations - Lam\nBaruch - Bar\tEzekial - Ezek\nDaniel - Dan\tHosea - Hos\nJoel - Joel\tAmos - Am\nJonah - Jon\tMicah - Mic\nNahum - Nah\tHabakkuk - Hab\nZephaniah - Zeph\tHaggai - Hag\nZechariah - Zech\tMalachi - Mal\nNew Testament\n\nMatthew - Mt\tMark - Mk\nLuke - Lk\tJohn - Jn\nActs of the Apostles - Acts\tRomans - Rom\n1 Corinthians - 1 Cor\t2 Corinthians - 2 Cor\nGalatians - Gal\tEphesians - Eph\nPhilippians - Phil\tColossians - Col\n1 Thessalonians - 1 Thess\t2 Thessalonians - 2 Thess\n1 Timothy - 1 Tim\t2 Timothy - 2 Tim\nTitus - Titus\tPhilemon - Philemon\nHebrews - Heb\tJames - Jas\n1 Peter - 1 Pet\t2 Peter - 2 Pet\n1 John - 1 Jn\t2 John - 2 Jn\n3 John - 3 Jn\tJude - Jude\nRevelation - Rev\tApocalypse - Apoc",
+            "title": "$:/plugins/ihm/bible/books",
+            "tags": "",
+            "modifier": "ihm4u",
+            "modified": "20151027025500595",
+            "creator": "ihm4u",
+            "created": "20151027023744398"
+        },
+        "$:/plugins/ihm/bible/books/VUL/Gen": {
+            "text": "name: Gen\nnameLong: Genesis\nsource: http://www.wilbourhall.org/pdfs/vulgate.pdf\n1,1:In principio creavit Deus cælum et terram.\n1,2:Terra autem erat inanis et vacua, et tenebræ erant super faciem abyssi : et spiritus Dei ferebatur super aquas.\n2,1:Igitur perfecti sunt cæli et terra, et omnis ornatus eorum.\n2,2:Complevitque Deus die septimo opus suum quod fecerat : et requievit die septimo ab universo opere quod patrarat.",
+            "type": "application/x-tiddler-dictionary",
+            "title": "$:/plugins/ihm/bible/books/VUL/Gen",
+            "tags": "",
+            "modifier": "ihm4u",
+            "modified": "20151027210255412",
+            "creator": "ihm4u",
+            "created": "20151027024540282"
+        },
+        "$:/plugins/ihm/bible/macros/bq": {
+            "text": "\\define bqb(book,verse, bible)\n<div class=\"bqb-div\" title=<<bverse \"$book$\" \"$verse$\" \"$bible$\"  \"tip\">>>\n<span  style=\"color: #aeb0b5; font-size: 1.4em; vertical-align:bottom;\">&ldquo;</span>\n<span class=\"bqb-quote\" style=\"vertical-align:middle;\">\n//<<bverse \"$book$\" \"$verse$\" \"$bible$\" \"text\" >>//\n</span>\n<span style=\"color: #aeb0b5; font-size: 1.4em; vertical-align:bottom;\">&rdquo;</span>\n<br>\n<span class=\"bqb-ref\">---<<bverse \"$book$\" \"$verse$\" \"$bible$\"  \"refshort\" >></span>\n</div>\n\\end\n\n\\define bqi(book,verse, bible,nums)\n<span title=<<bverse \"$book$\" \"$verse$\" \"$bible$\" \"tip\">>>\n  <span class=\"bqi-quote\">\n  //<<bverse \"$book$\" \"$verse$\"  \"$bible$\" \"inline-text\">>//\n  </span>\n<span class=\"bqi-ref\">(<<bverse \"$book$\" \"$verse$\" \"$bible$\"  \"refshorter\">>)</span>\n</span>\n\\end\n\n\nThis is a great test, many of the names stood out, and I found it very familiar, <<bqi Gen 1,2>>, what is the relationship to them today? Are they okay? Yes, they are okay. Thay are my children.\n\n\n<<bqb Gen @1,1-2,1>>\n<<bqi Gen 1,1-2,1 VUL>>\n\n<<bqb Gen @1,29-2,3 MEX>>\n\n<$list filter=\"[[$:/plugins/ihm/bible/translations]indexes[]]\">\n{{!!title}} --- <$transclude tiddler=\"$:/plugins/ihm/bible/translations\" index={{!!title}} ></$transclude><br>\n</$list>\n\nGen 1,1: \n<$view tiddler= \"$:/plugins/ihm/bible/books/VUL/Gen\" index={{$:/plugins/ihm/bible/verse}} > </$view>\n\nsource:\n{{$:/plugins/ihm/bible/books/VUL/Gen##source}}\n\n",
+            "title": "$:/plugins/ihm/bible/macros/bq",
+            "tags": "$:/tags/Macro",
+            "modifier": "ihm4u",
+            "modified": "20151029034218871",
+            "creator": "ihm4u",
+            "created": "20151026070155866"
+        },
+        "$:/plugins/ihm/bible/macros/bverse.js": {
+            "text": "/*\\\ntitle: $:/plugins/ihm/bible/macros/bref.js\ntype: application/javascript\nmodule-type: macro\n\nMacro to return a formatted version of the current time\n\n\\*/\n(function(){\n\n/*jslint node: true, browser: true */\n/*global $tw: false */\n\"use strict\";\n\n/*\nInformation about this macro\n*/\n\nexports.name = \"bverse\";\n\nexports.params = [\n  {name: \"book\"},\n  {name: \"verse\"},\n  {name: \"bible\"},\n  {name: \"format\"}\n];\n\n/*\nRun the macro\n*/\nexports.run = function(book,verse,bible,format) {\n  var res = \"\";\n  var shownums=false;\n  var verdisp=verse;\n  var vsep=$tw.wiki.getTiddlerText(\"$:/config/ihm/bible/verseSeparator\");\n  \n  //Show verse numbers inline if verse if prefixed by '@'\n  if (verse[0] === \"@\") {\n    shownums = true;\n    verse = verse.slice(1,verse.length);\n    verdisp=verse;\n  } else if (verse[0] === \"#\") {\n    shownums = 'tip';\n    verse = verse.slice(1,verse.length);\n    verdisp=verse;\n  } \n  \n  //Use configured verse separator\n  if (vsep) verdisp=verdisp.replace(/,/g,vsep);\n  \n  bible = bible ||  $tw.wiki.getTiddlerText(\"$:/config/ihm/bible/defaultTranslation\");\n  format = format || \"text\";\n\n  //DEBUG console.log(`bverse ${book},${verse},${bible},${format}`);\n  \n  switch (format) {\n    case \"inline-text\":\n      res = getVerses(book,verse,bible,shownums); \n      res = trim_quote(res,\"inline\")\n      break;\n      \n    case \"text\":\n      res = getVerses(book,verse,bible,shownums);\n      res = trim_quote(res,\"block\");\n      break;\n\n    case \"reflong\":\n      res = $tw.wiki.getTextReference(\"$:/plugins/ihm/bible/books/\"+bible+\"/\"+book+\"##nameLong\");\n      res = res +\". \" +verdisp; \n      res = res + \"(\";\n      res = res +           $tw.wiki.getTextReference(\"$:/plugins/ihm/bible/translations##\"+bible) + \")\";\n      break;\n      \n    case \"refshort\":\n      res = $tw.wiki.getTextReference(\"$:/plugins/ihm/bible/books/\"+bible + \"/\"+book+\"##name\");\n      res = res+\". \"+verdisp+\" (\"+bible+\")\";\n      break;\n      \n    case \"refshorter\":\n      res = $tw.wiki.getTextReference(\"$:/plugins/ihm/bible/books/\"+bible+\"/\"+book+\"##name\");\n      res = res+\". \"+verdisp;\n      break;\n      \n    case \"tip\":\n      var n;\n      var bibles = ($tw.wiki.getTiddlerText(\"$:/config/ihm/bible/translations\") || \"\").split(\" \");\n      var defBible =  $tw.wiki.getTiddlerText(\"$:/config/ihm/bible/defaultTranslation\").trim();\n      //Add default bible if it is not there\n      if ( (bible!=defBible) && (bibles.indexOf(defBible) < 0) )\n         bibles.push(defBible)\n         \n      //Remove bible which is printed in the quote\n      if ((n=bibles.indexOf(bible))>=0)\n         bibles.splice(n,1)\n         \n      //DEBUG  console.log(\"bibles=\",bibles,\"bible=\",bible,\"defBible=\",defBible)\n         \n      //Add quotes and ref from all the bibles   \n      if (bibles) {\n        bibles.forEach(function(b) {\n          res = res + trim_quote(getVerses(book,verse,b,'tip'),'tip');\n          res = res + \" (\" + b + \")\\n\\n\";\n          //DEBUG console.log(\"tip bible b=\",b)\n        });\n      } \n      break;\n  }        \n\n  return res;\n};\n\n  function trim_quote(quote,type) {\n    switch(type) {\n      case \"inline\":\n        //Trim spaces and last dot from quote, replace\n        // end of phrase punctuation with ellipsis\n        quote = quote.replace(/^\\s\\s*/, '').replace(/\\s\\s*$/, '').replace(/\\.$/,'').replace(/(;|,)$/,'&hellip;');\n        break;\n      case \"block\":\n        //Trim spaces and replace end of phrase punctuation\n        //with ellipsis (leaves dot alone)\n        quote = quote.replace(/^\\s\\s*/, '').replace(/\\s\\s*$/, '').replace(/(;|,)$/,'&hellip;');\n      case \"tip\":\n        //Trim spaces and replace end of phrase punctuation\n        //with ellipsis (leaves dot alone)\n        quote = quote.replace(/^\\s\\s*/, '').replace(/\\s\\s*$/, '').replace(/(;|,)$/,'...');\n        break;\n    }\n    return quote;\n  }\n  \n  function getVerses(book,verses,bible,addnums) {\n    //var supnum = [ \"⁻\",\"¹\",\"²\",\"³\",\"⁴\",\"⁵\",\"⁶\",\"⁷\",\"⁸\",\"⁹\"];\n    var v=/(\\d+),(\\d+)-?(\\d*)?,?(\\d*)/.exec(verses);\n    var multichapter = false;\n    if (!v) return \"Wrong verse format: \"+verses;\n  \n    //DEBUG console.log(`getVerse ${book},${verses},${bible},${addnums}`);\n    var ndxs = []; /*dictionary indexes*/\n    if (v[3] === v[1]) { v[3] = v[4]; v[4]=\"\"; }\n    if (v[4] === \"\") { //Verses within same chapter\n      ndxs.push(v[1]+\",\"+v[2]);\n      for(var i=parseInt(v[2])+1;i<=parseInt(v[3]);i++)\n        ndxs.push(v[1]+\",\"+i);\n      \n    } else { //Verses spanning chapters\n      multichapter=true;\n      var avail = $tw.wiki.filterTiddlers(\"[[$:/plugins/ihm/bible/books/\"+bible+\"/\"+book+\"]indexes[]]\");\n      avail = avail.filter(function(ndx) {\n        var match=/(\\d+),(\\d+)/.exec(ndx);\n        if (!match) return false;\n        var availch = parseInt(match[1]),\n            availver = parseInt(match[2]),\n            wantedch1 = parseInt(v[1]),\n            wantedver1 = parseInt(v[2]),\n            wantedch2 = parseInt(v[3]),\n            wantedver2 = parseInt(v[4]);\n        //Verses in starting chapter\n        if (availch === wantedch1 && availver >= wantedver1)\n          return true;\n        //Verses in ending chapter\n        if (availch === wantedch2 && availver <= wantedver2)\n          return true;\n        //Verses in between\n        if (availch > wantedch1 && availch < wantedch2)\n          return true;\n        \n        return false;\n      });\n      //DEBUG console.log(\"avail=\",avail,\"\\naddnums=\",addnums);\n      ndxs = ndxs.concat(avail);\n    } //end of verse spanning chapters\n   \n    ndxs = ndxs.sort(function(a,b) {\n      var na = a.split(\",\"), nb=b.split(\",\");\n      var n1 = parseInt(na[0])*1000 + parseInt(na[1]);\n      var n2 = parseInt(nb[0])*1000 + parseInt(nb[1]);\n      return n1-n2;\n    });\n    \n    var res = [],bold=\"''\",sup=\"^^\",num=\"\";\n    if (addnums=='tip') {\n      bold = \"\"; sup=\"\";\n    }\n    for(var i=0;i<ndxs.length;i++) {\n      if (addnums) {\n        var nums = ndxs[i].split(\",\");\n        if (multichapter && parseInt(nums[1]) == 1)\n          num=sup+bold+nums[0]+bold+\",\"+nums[1]+sup;\n        else \n          num=sup+nums[1]+sup;\n      }\n      var txt =$tw.wiki.getTextReference(\"$:/plugins/ihm/bible/books/\"+bible+\"/\"+book+\"##\"+ndxs[i])\n      //DEBUG console.log(`bible=${bible} book=${book} txt=`,ndxs[i],\" -- \",txt)\n      if (txt) res.push(num+\" \"+txt); \n    }\n    return res.length==0 ? \"-- N/A --\":res.join(\" \");\n    \n  }\n})();",
+            "type": "application/javascript",
+            "title": "$:/plugins/ihm/bible/macros/bverse.js",
+            "tags": "$:/tags/Macro",
+            "module-type": "macro",
+            "modifier": "ihm4u",
+            "modified": "20151031004728577",
+            "creator": "ihm4u",
+            "created": "20151027035310811"
+        },
+        "$:/plugins/ihm/bible/readme": {
+            "text": "!Quick start\nTo show a bible quote in block mode:\n``<<bqb Gen 1,1>>``\n\nDisplays as:\n<<bqb Gen 1,1>>\n\nFor inline bible quotes you can do something like this:\n\n``In the bible it says that God created the heavens and the earth, the latin says <<bqi Gen 1,1>>``\n\nIt display as:\n\nIn the bible it says that God created the heavens and the earth, the latin says <<bqi Gen 1,1>>.\n\n!More options\nYou can specify the translation to be used:\n``<<bqb Gen 1,1 NAB>>``\n\n<<bqb Gen 1,1 NAB>>\n\n!Configuration\n|!Tiddler |!Description |\n|$:/config/ihm/bible/defaultTranslation |The translation to be used if none is specified |\n|$:/config/ihm/bible/verseSeparator |The character to use to separate chapter from verse number |",
+            "title": "$:/plugins/ihm/bible/readme",
+            "tags": "",
+            "modifier": "ihm4u",
+            "modified": "20151028011320030",
+            "creator": "ihm4u",
+            "created": "20151028005148166"
+        },
+        "$:/plugins/ihm/bible/stylesheet": {
+            "text": ".bqb-div {\n   font-family:serif;\n   margin-left: 2em;\n   margin-right: 2em;\n   text-align: justify;\n}\n\n.bqb-quote {\n   color: #205493; /*cool-blue*/\n   font-size: 1.1em;\n   text-shadow: 2px 2px 3px rgba(150, 150, 150, 1);\n}\n\n.bqb-ref {\n   color: #cd2026; /*secondary dark */\n   font-style: italics;\n}\n\n.bqi-quote {\n   color: #205493; /*cool-blue*/\n}\n\n.bqi-ref {\n   color: #fdb81e; /*gold*/\n}\n",
+            "type": "text/css",
+            "title": "$:/plugins/ihm/bible/stylesheet",
+            "tags": "$:/tags/Stylesheet",
+            "modifier": "ihm4u",
+            "modified": "20151028024145108",
+            "creator": "ihm4u",
+            "created": "20151027054954411"
+        },
+        "$:/plugins/ihm/bible/translations": {
+            "text": "RSVCE:Revised Standard Version - Catholic Edition\nNAB:New American Bible\nVUL:Vulgata\nNVUL:Nova Vulgata\nNAV:Biblia de Navarra",
+            "type": "application/x-tiddler-dictionary",
+            "title": "$:/plugins/ihm/bible/translations",
+            "tags": "",
+            "modifier": "ihm4u",
+            "modified": "20151027041502805",
+            "creator": "ihm4u",
+            "created": "20151026065847879"
+        },
+        "$:/plugins/ihm/bible/books/BHS/Gen": {
+            "created": "20151029050633796",
+            "creator": "ihm4u",
+            "text": "name: Gen\nnameLong: Genesis\nsource:http://www.bibelwissenschaft.de/online-bibeln/biblia-hebraica-stuttgartensia-bhs/lesen-im-bibeltext/\n1,1:בְּרֵאשִׁ֖ית בָּרָ֣א אֱלֹהִ֑ים אֵ֥ת הַשָּׁמַ֖יִם וְאֵ֥ת הָאָֽרֶץ׃\n2,2:וְהָאָ֗רֶץ הָיְתָ֥ה תֹ֨הוּ֙ וָבֹ֔הוּ וְחֹ֖שֶׁךְ עַל־פְּנֵ֣י תְהֹ֑ום וְר֣וּחַ אֱלֹהִ֔ים מְרַחֶ֖פֶת עַל־פְּנֵ֥י הַמָּֽיִם׃\n1,3:וַיֹּ֥אמֶר אֱלֹהִ֖ים יְהִ֣י אֹ֑ור וַֽיְהִי־אֹֽור׃\n1,4:וַיַּ֧רְא אֱלֹהִ֛ים אֶת־הָאֹ֖ור כִּי־טֹ֑וב וַיַּבְדֵּ֣ל אֱלֹהִ֔ים בֵּ֥ין הָאֹ֖ור וּבֵ֥ין הַחֹֽשֶׁךְ׃\n1,5:וַיִּקְרָ֨א אֱלֹהִ֤ים׀ לָאֹור֙ יֹ֔ום וְלַחֹ֖שֶׁךְ קָ֣רָא לָ֑יְלָה וַֽיְהִי־עֶ֥רֶב וַֽיְהִי־בֹ֖קֶר יֹ֥ום אֶחָֽד׃ פ\n1,6:וַיֹּ֣אמֶר אֱלֹהִ֔ים יְהִ֥י רָקִ֖יעַ בְּתֹ֣וךְ הַמָּ֑יִם וִיהִ֣י מַבְדִּ֔יל בֵּ֥ין מַ֖יִם לָמָֽיִם׃\n1,7:וַיַּ֣עַשׂ אֱלֹהִים֮ אֶת־הָרָקִיעַ֒ וַיַּבְדֵּ֗ל בֵּ֤ין הַמַּ֨יִם֙ אֲשֶׁר֙ מִתַּ֣חַת לָרָקִ֔יעַ וּבֵ֣ין הַמַּ֔יִם אֲשֶׁ֖ר מֵעַ֣ל לָרָקִ֑יעַ וַֽיְהִי־כֵֽן׃\n\n",
+            "type": "application/x-tiddler-dictionary",
+            "title": "$:/plugins/ihm/bible/books/BHS/Gen",
+            "tags": "",
+            "modifier": "ihm4u",
+            "modified": "20151029053638298"
+        },
+        "$:/plugins/ihm/bible/books/MEX/Gen": {
+            "text": "name: Gen\nnameLong: Genesis\nsource: http://www.vicariadepastoral.org.mx/sagrada_escritura/biblia/antiguo_testamento/01_genesis_01.htm\n1,1:En el principio creó Dios los cielos y la tierra.\n1,2:La tierra era caos y confusión y oscuridad por encima del abismo, y un viento de Dios aleteaba por encima de las aguas.\n1,3:Dijo Dios: \"Haya luz\", y hubo luz.\n1,4:Vio Dios que la luz estaba bien, y apartó Dios la luz de la oscuridad;\n1,5: y llamó Dios a la luz \"día\", y a la oscuridad la llamó \"noche\". Y atardeció y amaneció: día primero.\n1,6:Dijo Dios: \"Haya un firmamento por en medio de las aguas, que las aparte unas de otras.\"\n1,7:E hizo Dios el firmamento; y apartó las aguas de por debajo del firmamento, de las aguas de por encima del firmamento. Y así fue.\n1,8:Y llamó Dios al firmamento \"cielos\". Y atardeció y amaneció: día segundo.\n1,9:Dijo Dios: \"Acumúlense las aguas de por debajo del firmamento en un solo conjunto, y déjese ver lo seco\"; y así fue.\n1,10:Y llamó Dios a lo seco \"tierra\", y al conjunto de las aguas lo llamó \"mares\"; y vio Dios que estaba bien.\n1,11:Dijo Dios: \"Produzca la tierra vegetación: hierbas que den semillas y árboles frutales que den fruto, de su especie, con su semilla dentro, sobre la tierra.\" Y así fue.\n1,12:La tierra produjo vegetación: hierbas que dan semilla, por sus especies, y árboles que dan fruto con la semilla dentro, por sus especies; y vio Dios que estaban bien.\n1,13:Y atardeció y amaneció: día tercero.\n1,14:Dijo Dios: \"Haya luceros en el firmamento celeste, para apartar el día de la noche, y valgan de señales para solemnidades, días y años;\n1,15:y valgan de luceros en el firmamento celeste para alumbrar sobre la tierra.\" Y así fue.\n1,16:Hizo Dios los dos luceros mayores; el lucero grande para el dominio del día, y el lucero pequeño para el dominio de la noche, y las estrellas;\n1,17:y los puso Dios en el firmamento celeste para alumbrar sobre la tierra,\n1,18:y para dominar en el día y en la noche, y para apartar la luz de la oscuridad; y vio Dios que estaba bien.\n1,19:Y atardeció y amaneció: día cuarto.\n1,20:Dijo Dios: \"Bullan las aguas de animales vivientes, y aves revoloteen sobre la tierra contra el firmamento celeste.\"\n1,21:Y creó Dios los grandes monstruos marinos y todo animal viviente, los que serpean, de los que bullen las aguas por sus especies, y todas las aves aladas por sus especies; y vio Dios que estaba bien;\n1,22:y los bendijo Dios diciendo: \"sean fecundos y multiplíquense, y llenen las aguas en los mares, y las aves crezcan en la tierra.\"\n1,23:Y atardeció y amaneció: día quinto.\n1,24:Dijo Dios: \"Produzca la tierra animales vivientes de cada especie: bestias, sierpes y alimañas terrestres de cada especie.\" Y así fue.\n1,25:Hizo Dios las alimañas terrestres de cada especie, y las bestias de cada especie, y toda sierpe del suelo de cada especie: y vio Dios que estaba bien.\n1,26:Y dijo Dios: \"Hagamos al ser humano a nuestra imagen, como semejanza nuestra, y manden en los peces del mar y en las aves de los cielos, y en las bestias y en todas las alimañas terrestres, y en todas las sierpes que serpean por la tierra.\n1,27:Creó, pues, Dios al ser humano a imagen suya, a imagen de Dios le creó, varón y mujer los creó.\n1,28:Y los bendijo Dios, y les dijo Dios: \"Sean fecundos y multiplíquense y llenen la tierra y sométanla; manden en los peces del mar y en las aves de los cielos y en todo animal que serpea sobre la tierra\".\n1,29:Dijo Dios: \"Vean que les he dado toda hierba de semilla que existe sobre la haz de toda la tierra, así como todo árbol que lleva fruto de semilla; para ustedes será de alimento.\n1,30:Y a todo animal terrestre, y a toda ave de los cielos y a toda sierpe de sobre la tierra, animada de vida, toda la hierba verde les doy de alimento.\" Y así fue.\n1,31:Vio Dios cuanto había hecho, y todo estaba muy bien. Y atardecío y amaneció: día sexto.\n2,1:Se concluyeron, pues, los cielos y la tierra y todo su aparato,\n2,2:y dio por concluida Dios en el séptimo día la labor que había hecho, y cesó en el día séptimo de toda la labor que hiciera.\n2,3:Y bendijo Dios el día séptimo y lo santificó; porque en él cesó Dios de toda la obra creadora que Dios había hecho.\n2,4:Esos fueron los orígenes de los cielos y la tierra, cuando fueron creados. El día en que hizo el Señor Dios la tierra y los cielos, \n2,5:no había aún en la tierra arbusto alguno del campo, y ninguna hierba del campo había germinado todavía, pues el Señor Dios no había hecho llover sobre la tierra, ni había hombre que labrara el suelo. \n2,6:Pero un manantial brotaba de la tierra, y regaba toda la superficie del suelo. \n2,7:Entonces el Señor Dios formó al hombre con polvo del suelo, e insufló en su nariz aliento de vida, y resultó el hombre un ser viviente.\n2,8:Luego plantó el Señor Dios un jardín en Edén, al oriente, donde colocó al hombre que había formado. \n2,9:El Señor Dios hizo brotar del suelo toda clase de árboles deleitosos a la vista y buenos para comer, y en medio del jardín, el árbol de la vida y el árbol de la ciencia del bien y del mal. \n2,10:De Edén salía un río que regaba el jardín, y desde allí se repartía en cuatro brazos.\n2,11:El uno se llama Pisón: es el que rodea todo el país de Javilá, donde hay oro. \n2,12:El oro de aquel país es fino. Allí se encuentra el bedelio y el ónice. \n2,13:El segundo río se llama Guijón: es el que rodea el país de Kus. \n2,14:El tercer río se llama Tigris: es el que corre al oriente de Asur. Y el cuarto río es el Eufrates. \n2,15:Tomó, pues, el Señor Dios al hombre y le dejó en al jardín de Edén, para que lo labrase y cuidase. \n2,16:Y Dios impuso al hombre este mandamiento: \"De cualquier árbol del jardín puedes comer, \n2,17:mas del árbol de la ciencia del bien y del mal no comerás, porque el día que comas de él, morirás sin remedio\".\n2,18:Dijo luego el Señor Dios: \"No es bueno que el hombre esté solo. Voy a hacerle una ayuda adecuada\".\n2,19:Y el Señor Dios formó del suelo todos los animales del campo y todas las aves del cielo y los llevó ante el hombre para ver cómo los llamaba, y para que cada ser viviente tuviese el nombre que el hombre le diera. \n2,20:El hombre puso nombres a todos los ganados, a las aves del cielo y a todos los animales del campo, mas para el hombre no encontró una ayuda adecuada. \n2,21:Entonces el Señor Dios hizo caer un profundo sueño sobre el hombre, el cual se durmió. Y le quitó una de las costillas, rellenando el vacío con carne. \n2,22:De la costilla que el Señor Dios había tomado del hombre formó una mujer y la llevó ante el hombre. \n2,23:Entonces éste exclamó: \"Esta vez sí que es hueso de mis huesos y carne de mi carne. Esta será llamada mujer, porque del varón ha sido tomada.\" \n2,24:Por eso deja el hombre a su padre y a su madre y se une a su mujer, y se hacen una sola carne.\n2,25:Estaban ambos desnudos, el hombre y su mujer, pero no se avergonzaban uno del otro.",
+            "type": "application/x-tiddler-dictionary",
+            "title": "$:/plugins/ihm/bible/books/MEX/Gen",
+            "tags": "",
+            "modifier": "ihm4u",
+            "modified": "20151028114505539",
+            "creator": "ihm4u",
+            "created": "20151028111207807"
+        },
+        "$:/plugins/ihm/bible/books/NA28/Mt": {
+            "created": "20151029050015176",
+            "creator": "ihm4u",
+            "text": "name: Mt\nnameLong: Matthew\nsource:http://www.bibelwissenschaft.de/online-bibeln/novum-testamentum-graece-na-28/lesen-im-bibeltext/\n1,1:Βίβλος γενέσεως Ἰησοῦ Χριστοῦ υἱοῦ Δαυὶδ υἱοῦ Ἀβραάμ.\n1,2:Ἀβραὰμ ἐγέννησεν τὸν Ἰσαάκ, Ἰσαὰκ δὲ ἐγέννησεν τὸν Ἰακώβ, Ἰακὼβ δὲ ἐγέννησεν τὸν Ἰούδαν καὶ τοὺς ἀδελφοὺς αὐτοῦ,\n1,3:Ἰούδας δὲ ἐγέννησεν τὸν Φάρες καὶ τὸν Ζάρα ἐκ τῆς Θαμάρ, Φάρες δὲ ἐγέννησεν τὸν Ἑσρώμ, Ἑσρὼμ δὲ ἐγέννησεν τὸν Ἀράμ,\n1,4:Ἀρὰμ δὲ ἐγέννησεν τὸν Ἀμιναδάβ, Ἀμιναδὰβ δὲ ἐγέννησεν τὸν Ναασσών, Ναασσὼν δὲ ἐγέννησεν τὸν Σαλμών,\n1,5:Σαλμὼν δὲ ἐγέννησεν τὸν Βόες ἐκ τῆς Ῥαχάβ, Βόες δὲ ἐγέννησεν τὸν Ἰωβὴδ ἐκ τῆς Ῥούθ, Ἰωβὴδ δὲ ἐγέννησεν τὸν Ἰεσσαί, \n1,6:Ἰεσσαὶ δὲ ἐγέννησεν τὸν Δαυὶδ τὸν βασιλέα. \nΔαυὶδ δὲ ἐγέννησεν τὸν Σολομῶνα ἐκ τῆς τοῦ Οὐρίου,",
+            "type": "application/x-tiddler-dictionary",
+            "title": "$:/plugins/ihm/bible/books/NA28/Mt",
+            "tags": "",
+            "modifier": "ihm4u",
+            "modified": "20151029053715476"
+        }
+    }
+}

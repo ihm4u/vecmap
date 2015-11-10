@@ -1,8 +1,9 @@
 {
 	"title": "$:/plugins/ihm/tidgraph",
-	"description": "Easy tiddler graphs",
+	"description": "Tidgraph - Easy tiddler graphs for TW5",
 	"author": "ihm4u",
 	"plugin-type": "plugin",
    "core-version": ">=5.1.9",
+   "version" : "0.8.14",
 	"list": "readme changelog"
 }

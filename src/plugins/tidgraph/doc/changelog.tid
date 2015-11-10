@@ -1,0 +1,42 @@
+created: 20151024161547099
+creator: ihm4u
+modified: 20151031061347109
+modifier: ihm4u
+tags: 
+title: $:/plugins/ihm/tidgraph/changelog
+
+''Version {{$:/plugins/ihm/tidgraph!!version}}''
+
+* Add support for back connections in the tree
+* Add support for list of fields in tooltip attribute 
+* Change name to tidgraph
+
+''Version 0.8.9''
+
+* Fix bug when start tiddler does not exist
+
+''Version 0.8.8''
+
+* Fix compatibility wih older browsers by not using string templates
+
+''Version 0.8.6''
+
+* Add filter attribute
+
+''Version 0.8.4''
+
+* fix debug info being printed
+
+''Version 0.8.3''
+
+* add user CSS classes: vmap-link, vmap-node, vmap-arrow
+
+''Version 0.8.2''
+
+* add nodetitle attribute
+* add tooltip attribute
+* use caption field as node title if present
+
+''Version 0.1.3''
+
+* fix export to static html

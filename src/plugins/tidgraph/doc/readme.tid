@@ -1,0 +1,30 @@
+created: 20151024054526558
+modified: 20151024065317719
+tags: 
+title: $:/plugins/ihm/tidgraph/readme
+
+!!Screenshot
+This is how it looks like with 7 tiddlers tagged by the [[Virtues]] tiddler:
+
+{{$:/plugins/ihm/tidgraph/tidgraph.png}}
+
+!!Why?
+I needed a very lightweight plugin to show a mind-map like diagram of tiddlers. I also use tiddlymap, it is very nice, but it is not lightweight. I wanted no third-party libraries, and a simple one-liner to make the graph.
+
+!!How
+Simply put this on your tiddler:
+
+``<$tidgraph start="MyRootTiddler" />``
+
+There are other options covered in the [[documentation|$:/plugins/ihm/tidgraph/documentation]].
+
+!!Features
+* No third-party libraries
+* Light weight
+* Rendering of map/graph with HTML5 and SVG (no heavy png or jpg images)
+* Automatic map/graph creation, no need for dragging/connecting/etc
+* Figures out tree-graph by means of tags or links
+
+!!Limitations
+* Layout is horizontal from left to right, if needed a vertical layout will be added later
+

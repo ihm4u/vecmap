@@ -1,0 +1,20 @@
+created: 20151024162342808
+modified: 20151024162854716
+title: $:/config/CodeMirror
+type: application/json
+
+{
+  "require": [
+      "$:/plugins/tiddlywiki/codemirror/mode/javascript/javascript.js",
+      "$:/plugins/tiddlywiki/codemirror/addon/dialog/dialog.js",
+      "$:/plugins/tiddlywiki/codemirror/addon/search/searchcursor.js",
+      "$:/plugins/tiddlywiki/codemirror/addon/edit/matchbrackets.js",
+      "$:/plugins/tiddlywiki/codemirror/keymap/vim.js",
+      "$:/plugins/tiddlywiki/codemirror/keymap/emacs.js"
+  ],
+  "configuration": {
+      "keyMap": "vim",
+      "matchBrackets":true,
+      "showCursorWhenSelecting": true
+  }
+}
